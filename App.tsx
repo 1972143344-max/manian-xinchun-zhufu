@@ -16,7 +16,7 @@ const App: React.FC = () => {
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [audioError, setAudioError] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const musicUrl = "/gongxi.mp3";
+  const musicUrl = `${import.meta.env.BASE_URL}gongxi.mp3`;
 
   // Easter Egg state
   const [titleClickCount, setTitleClickCount] = useState(0);
