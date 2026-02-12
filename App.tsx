@@ -124,7 +124,7 @@ const App: React.FC = () => {
     try {
       const [aiResult] = await Promise.all([
         generateRandomBlessing(),
-        new Promise(resolve => setTimeout(resolve, 1500)) // Min delay for suspense
+        new Promise(resolve => setTimeout(resolve, 500)) // Keep a short transition, but feel faster
       ]);
       setResult(aiResult);
     } catch (e) {
@@ -297,7 +297,7 @@ const App: React.FC = () => {
       {showEasterEgg && <EasterEgg onClose={() => setShowEasterEgg(false)} />}
 
       <footer className="absolute bottom-2 w-full text-center text-yellow-500/30 text-xs font-serif z-10 pointer-events-none">
-        Powered by Google Gemini • 恭喜发财
+        Powered by Local Blessing Library • 恭喜发财
       </footer>
     </div>
   );
