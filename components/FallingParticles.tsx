@@ -21,10 +21,10 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
     const items: Item[] = [];
     const effects: ClickEffect[] = [];
     const isLowerPowerDevice = (navigator.hardwareConcurrency || 8) <= 4;
-    const itemCount = width < 768 || isLowerPowerDevice ? 8 : 12;
+    const itemCount = width < 768 || isLowerPowerDevice ? 9 : 13;
     const maxEffects = 36;
-    const itemMinSpeed = 0.5;
-    const itemSpeedRange = 0.5;
+    const itemMinSpeed = 1.5;
+    const itemSpeedRange = 2.0;
     const getItemFallSpeed = () => itemMinSpeed + Math.random() * itemSpeedRange;
     const pushEffect = (x: number, y: number, text: string) => {
       if (effects.length >= maxEffects) {
@@ -71,17 +71,17 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
         this.text = text;
         this.alpha = 1;
         this.life = 1.0;
-        this.velocity = 0.4 + Math.random() * 0.25;
+        this.velocity = 1.5 + Math.random();
         this.scale = 0.5;
       }
 
       update() {
         this.y -= this.velocity;
-        this.life -= 0.008;
+        this.life -= 0.015;
         this.alpha = Math.max(0, this.life);
 
         if (this.scale < 1.2) {
-          this.scale += 0.04;
+          this.scale += 0.1;
         }
       }
 

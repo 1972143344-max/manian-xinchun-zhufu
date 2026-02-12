@@ -69,8 +69,8 @@ const Fireworks: React.FC = () => {
 
     const particles: any[] = [];
     const fireworks = fireworksRef.current;
-    const launchInitialSpeed = 1.4;
-    const launchAcceleration = 1.03;
+    const launchInitialSpeed = 2;
+    const launchAcceleration = 1.05;
     const maxParticles = 320;
     const particlesPerExplosion = 24;
     const maxConcurrentFireworks = 12;
@@ -226,8 +226,8 @@ const Fireworks: React.FC = () => {
       return Math.random() * (max - min) + min;
     }
 
-    const autoLaunchIntervalMin = 200;
-    const autoLaunchIntervalMax = 250;
+    const autoLaunchIntervalMin = 40;
+    const autoLaunchIntervalMax = 100;
     const getAutoLaunchInterval = () => Math.floor(random(autoLaunchIntervalMin, autoLaunchIntervalMax));
     let limiterTotal = getAutoLaunchInterval();
     let limiterTick = 0;
