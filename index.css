@@ -1,0 +1,54 @@
+@import 'tailwindcss';
+@import '@fontsource/noto-serif-sc/chinese-simplified-400.css';
+@import '@fontsource/noto-serif-sc/chinese-simplified-700.css';
+@import '@fontsource/noto-serif-sc/latin-400.css';
+@import '@fontsource/noto-serif-sc/latin-700.css';
+@import '@fontsource/ma-shan-zheng/chinese-simplified-400.css';
+@import '@fontsource/ma-shan-zheng/latin-400.css';
+
+:root {
+  font-family: 'Noto Serif SC', serif;
+}
+
+body {
+  font-family: 'Noto Serif SC', serif;
+  overflow-x: hidden;
+}
+
+.font-calligraphy {
+  font-family: 'Ma Shan Zheng', cursive;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
