@@ -8,7 +8,8 @@
     "dev:api": "node server/api-server.mjs",
     "dev:all": "node scripts/dev-all.mjs",
     "build": "vite build",
-    "preview": "vite preview --host 0.0.0.0"
+    "preview": "vite preview --host 0.0.0.0",
+    "deploy:cf": "npm run build && npx wrangler deploy"
   },
   "dependencies": {
     "@fontsource/ma-shan-zheng": "^5.1.1",
