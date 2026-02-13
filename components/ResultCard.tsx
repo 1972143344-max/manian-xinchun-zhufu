@@ -22,6 +22,16 @@ const ResultCard: React.FC<ResultCardProps> = ({ data, onReset }) => {
         className="bg-[#fff1f2] border-[6px] border-double border-red-800 p-8 rounded-sm shadow-2xl text-center relative overflow-hidden"
         style={{ backgroundImage: 'radial-gradient(circle, #fff1f2 0%, #ffe4e6 100%)' }}
       >
+        <button
+          type="button"
+          onClick={onReset}
+          aria-label="Close blessing card"
+          title="Close"
+          className="absolute top-3 right-3 z-30 w-11 h-11 rounded-full border-2 border-yellow-200 bg-gradient-to-b from-yellow-400 to-yellow-500 text-red-900 text-xl font-black leading-none shadow-[0_4px_10px_rgba(0,0,0,0.25)] transition-all duration-200 hover:from-yellow-300 hover:to-yellow-400 hover:scale-105 active:scale-95"
+        >
+          X
+        </button>
+
         {/* Traditional Corner Patterns */}
         <div className="absolute top-2 left-2 w-8 h-8 border-t-2 border-l-2 border-red-900"></div>
         <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-red-900"></div>

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import Fireworks from './components/Fireworks';
 import FallingParticles from './components/FallingParticles';
 import RedEnvelope from './components/RedEnvelope';
@@ -144,10 +144,10 @@ const App: React.FC = () => {
   };
 
   // Callback from FallingParticles when background is clicked
-  const handleBackgroundClick = (x: number, y: number) => {
+  const handleBackgroundClick = useCallback((x: number, y: number) => {
     const event = new CustomEvent('triggerFirework', { detail: { x, y } });
     window.dispatchEvent(event);
-  };
+  }, []);
 
   // Logic to determine which theme to show in SceneEffect
   const activeTheme = (step === 'result' && result?.visualTheme === 'golden_horse') 

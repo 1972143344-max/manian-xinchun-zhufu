@@ -23,14 +23,24 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
     const isLowerPowerDevice = (navigator.hardwareConcurrency || 8) <= 4;
     const itemCount = width < 768 || isLowerPowerDevice ? 9 : 13;
     const maxEffects = 36;
+    const itemHorizontalPadding = 22;
+    const effectHorizontalPadding = 56;
     const itemMinSpeed = 1.5;
     const itemSpeedRange = 2.0;
     const getItemFallSpeed = () => itemMinSpeed + Math.random() * itemSpeedRange;
+    const clamp = (value: number, min: number, max: number) => Math.min(Math.max(value, min), max);
+    const getItemSpawnX = () => {
+      const minX = itemHorizontalPadding;
+      const maxX = Math.max(minX, width - itemHorizontalPadding);
+      return minX + Math.random() * (maxX - minX);
+    };
     const pushEffect = (x: number, y: number, text: string) => {
       if (effects.length >= maxEffects) {
         effects.shift();
       }
-      effects.push(new ClickEffect(x, y, text));
+      const maxX = Math.max(effectHorizontalPadding, width - effectHorizontalPadding);
+      const safeX = clamp(x, effectHorizontalPadding, maxX);
+      effects.push(new ClickEffect(safeX, y, text));
     };
 
     const icons = {
@@ -114,7 +124,7 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
       shimmerOffset: number;
 
       constructor() {
-        this.x = Math.random() * width;
+        this.x = getItemSpawnX();
         this.y = -50 - Math.random() * 800;
         this.speed = getItemFallSpeed();
         this.rotation = Math.random() * Math.PI * 2;
@@ -155,7 +165,7 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
 
       reset() {
         this.y = -60 - Math.random() * 200;
-        this.x = Math.random() * width;
+        this.x = getItemSpawnX();
         this.speed = getItemFallSpeed();
       }
 
@@ -291,6 +301,10 @@ const FallingParticles: React.FC<FallingParticlesProps> = ({ onBackgroundClick }
       height = window.innerHeight;
       canvas.width = width;
       canvas.height = height;
+      const maxX = Math.max(itemHorizontalPadding, width - itemHorizontalPadding);
+      for (const item of items) {
+        item.x = clamp(item.x, itemHorizontalPadding, maxX);
+      }
     };
 
     window.addEventListener('resize', handleResize);
