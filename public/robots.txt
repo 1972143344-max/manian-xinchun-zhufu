@@ -1,0 +1,5 @@
+﻿User-agent: *
+Allow: /
+
+Sitemap: https://haopraticalvenience.online/sitemap.xml
+Host: haopraticalvenience.online
